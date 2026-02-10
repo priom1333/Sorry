@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I’m Sorry Rishita 🤍</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #4a1c1c;
+    font-weight: bold;
+  }
+
+  .face {
+    font-size: 110px;
+    transition: all 0.4s ease;
+  }
+
+.tap-area {
+  background: none;
+  box-shadow: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 180px;
+  cursor: pointer;
+  margin: 25px auto;
+}
+.tap-area:active {
+  transform: scale(1.1);
+}
+
+  .instruction {
+    font-size: 19px;
+    color: #5a2a2a;
+    font-weight: bold;
+  }
+
+  .float {
+    position: absolute;
+    font-size: 24px;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    color: #b71c1c;
+    animation: floatUp 2.5s ease-out forwards;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-100px); }
+  }
+
+  .final {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #3a1a1a;
+    font-weight: bold;
+    display: none;
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="title">Rishita, beat and make me your good boy🥹🤍</div>
+
+  <div id="face" class="face">🥹🫶🏻</div>
+
+  <div class="instruction">
+    <b>Each beating is an apology from my heart 🩷☺️</b>
+  </div>
+
+  <div id="tapArea" class="tap-area">👨🏻</div>
+
+  <div id="finalMsg" class="final">
+    <b>
+      I’m really sorry, Rishita.<br>
+      I’ll never do it again.<br>
+      Please forgive me 🥹🤍<br>
+      <i>I love you amar shuna Rishita 🥹</i>
+    </b>
+  </div>
+</div>
+
+<audio id="sound1" src="tap1.m4a" preload="auto"></audio>
+<audio id="sound2" src="tap2.m4a" preload="auto"></audio>
+<audio id="sound3" src="tap3.m4a" preload="auto"></audio>
+<audio id="sound4" src="tap4.m4a" preload="auto"></audio>
+
+
+  <script>
+  const face = document.getElementById("face");
+  const tapArea = document.getElementById("tapArea");
+  const finalMsg = document.getElementById("finalMsg");
+
+  let taps = 0;
+  let soundIndex = 0;
+
+  
+  const sorryMessages = [
+    "<b><i>I’m sorry Rishita 🥺</i></b>",
+    "<b><i>I never meant to hurt you</i></b>",
+    "<b><i>I’ll never do it again</i></b>",
+    "<b><i>So sorry sweetheart 🤍</i></b>",
+    "<b><i>Please forgive me</i></b>",
+    "<b><i>You didn’t deserve that</i></b>",
+    "<b><i>Your feelings matter to me</i></b>",
+    "<b><i>I really regret it</i></b>",
+    "<b><i>I promise I’ll be careful</i></b>",
+    "<b><i>Truly sorry, Rishita 🌸</i></b>"
+  ];
+  
+  const sounds = [
+    document.getElementById("sound1"),
+    document.getElementById("sound2"),
+    document.getElementById("sound3"),
+    document.getElementById("sound4")
+  ];
+  
+
+  tapArea.addEventListener("click", () => {
+    const sound = sounds[soundIndex];
+if (sound) {
+  sound.currentTime = 2;
+  sound.playbackRate = 1.5; // 🔥 faster sound
+  sound.play().catch(() => {});
+  soundIndex = (soundIndex + 1) % sounds.length;
+}
+
+    taps++;
+
+    const msg = document.createElement("div");
+    msg.className = "float";
+    msg.style.left = Math.random() * 70 + "vw";
+    msg.style.top = Math.random() * 60 + "vh";
+    msg.innerHTML =
+      sorryMessages[Math.floor(Math.random() * sorryMessages.length)];
+
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 2500);
+
+    if (taps === 15) {
+      finalMsg.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
